@@ -11,9 +11,9 @@
 
         <v-card>
           <v-card-title>
-            <a href="#" class="text-decoration-none black--text">
-              <h2>Laravel Error</h2>
-            </a>
+              <router-link to="/thread/laravel+error" class="text-decoration-none black--text">
+                <h2>Laravel Error</h2>
+              </router-link>
           </v-card-title>
 
           <v-card-text>
