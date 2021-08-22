@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Register from "../views/auth/Register";
 import Login from "../views/auth/Login";
 import SingleThread from "../views/thread/SingleThread";
+import CreateThread from "../views/thread/CreateThread";
 
 Vue.use(VueRouter)
 
@@ -24,6 +25,12 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
+  },
+
+  {
+    path: '/create/thread',
+    name: 'Create Thread',
+    component: CreateThread
   },
 
   {
