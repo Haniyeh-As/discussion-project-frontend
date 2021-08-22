@@ -25,15 +25,9 @@
                 <p class="text-right">2021-08-21 20:45</p>
               </v-col>
             </v-row>
-            <p>Lorem ipsum dolor sit amet, stet ornatus ius ei, mei eu oratio mnesarchum. No vitae dissentiet usu, has no legere nonumes. Ex ridens aeterno nam, eu vim delenit dolorum deserunt. Tation appetere vis ex. An audiam euripidis prodesset per, quo bonorum referrentur eu. Id eos admodum convenire, ei duis feugait euripidis vix. Quo eros soleat ea, noster nusquam disputando mel ut, in possim dignissim nec.
-
-              Ius voluptaria posidonium interesset te, eu ius tation dissentiet, cu iudico nullam vel. Pri nostrud perpetua id, an oportere neglegentur ius, usu deserunt rationibus disputando in. Illum mazim phaedrum ei has. Ut dicit minimum salutatus mea. Lucilius dissentiunt mea an, diam copiosae in usu.
-
-              Vix eu epicurei tacimates, ei pro solum veritus. Eu impetus incorrupte adversarium has, natum verear temporibus in ius, cu mei tale molestie. Bonorum inermis erroribus vix ei. Vel et illud doctus abhorreant, primis ocurreret per an. Minim affert in pro.
-
-              Ne quem deserunt conclusionemque mei. Te sit tale splendide. Ea est debitis conclusionemque, nam inani necessitatibus id. Cu commodo legimus neglegentur vel. Hinc civibus vix te, mentitum adolescens cu quo, eu option accusata sed.
-
-              Munere liberavisse theophrastus cu vim. Eros tacimates indoctum vix ea. Mel graeci nominati moderatius id, probo everti pro te. Id aeque oblique mnesarchum eam, unum utinam prompta cu pri. Tota mundi ridens qui et. Eu nec adhuc dicat dolore.</p>
+            <vue-markdown>
+              # My Markdown Test :*
+            </vue-markdown>
           </v-card-text>
         </v-card>
       </v-col>
@@ -164,8 +158,13 @@
 </template>
 
 <script>
+import VueMarkdown from 'vue-markdown/src/VueMarkdown'
+
 export default {
-name: "SingleThread"
+  name: "SingleThread",
+  components: {
+    VueMarkdown
+  }
 }
 </script>
 
