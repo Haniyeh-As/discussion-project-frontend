@@ -1,4 +1,4 @@
-import Axios from "../axios";
+import Axios, {baseUrl} from "../axios";
 import axios from "axios";
 
 export let registerRequest = (formData) => {
@@ -8,7 +8,7 @@ export let registerRequest = (formData) => {
 export let loginRequest = async (formData) => {
     if (!checkAuth()){
         let loginReq
-        await axios.get('http://127.0.0.1:8000/api/csrf-cookie').then(res => {
+        await axios.get(`${baseUrl}csrf-cookie`).then(res => {
             loginReq = Axios.post(`auth/login`, formData)
         })
         return loginReq
@@ -21,9 +21,10 @@ export let getUserDataRequest = () => {
     }
 };
 
-export let checkAuth = () => {
+export let checkAuth = async () => {
     let isAuth = false;
-    Axios.get(`auth/user`).then( res => isAuth = res.data.message !== "Unauthenticated.")
+    await Axios.get(`auth/user`).then(res => isAuth = res.data.message !== "Unauthenticated.")
+    localStorage.setItem('isAuth', isAuth ? 'true' : 'false')
 
     return isAuth;
 };
