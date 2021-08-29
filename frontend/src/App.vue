@@ -80,9 +80,6 @@ export default {
   }),
 
   mounted(){
-    Axios.get('threads').then(res => {
-      console.log(res)
-    });
   }
 };
 </script>
