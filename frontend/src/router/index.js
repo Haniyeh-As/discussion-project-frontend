@@ -19,13 +19,13 @@ const routes = [
   {
     path: '/register',
     name: 'Register',
-    component: !checkAuth ? Register : Home
+    component: localStorage.getItem('isAuth') === 'false' ? Register : Home
   },
 
   {
     path: '/login',
     name: 'Login',
-    component: !checkAuth() ? Login : Home
+    component: localStorage.getItem('isAuth') === 'false' ? Login : Home
   },
 
   {

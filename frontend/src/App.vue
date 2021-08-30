@@ -27,7 +27,7 @@
 
       <v-spacer></v-spacer>
 
-      <div v-show="!isAuth">
+      <div v-if="!isAuth">
         <router-link to="/register">
           <v-btn
               text
@@ -47,11 +47,12 @@
         </router-link>
       </div>
 
-      <div v-show="isAuth">
+      <div v-if="isAuth">
           {{ userData.name }}
         <v-btn
             light
             class="ml-3"
+            @click="sendLogoutRequest"
         >
           Logout
         </v-btn>
@@ -89,11 +90,23 @@ export default {
 
   data: () => ({
     isAuth: false,
-    userData: null
+    userData: {
+      name: null
+    }
   }),
+  methods:{
+    sendLogoutRequest(){
+      logoutRequest().then(res => {
+        this.$router.push('/')
+        this.isAuth = false;
+        localStorage.setItem('isAuth', 'false');
+      })
+    }
+  },
 
   mounted(){
-    this.isAuth = checkAuth();
+    checkAuth();
+    this.isAuth = localStorage.getItem('isAuth') === 'true';
     if (this.isAuth){
       getUserDataRequest().then(res => {
         this.userData = res.data[0]
