@@ -59,7 +59,9 @@
 </template>
 
 <script>
-import {registerRequest} from "@/requests/Auth";
+
+import {registerRequest} from "../../requests/Auth";
+
 export default {
   name: "Register",
   data: () => ({

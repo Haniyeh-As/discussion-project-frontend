@@ -74,7 +74,7 @@
 </template>
 
 <script>
-import {threadsListRequest} from "@/requests/Threads";
+import {threadsListRequest} from "../requests/Threads";
 
 export default {
   name: 'Home',

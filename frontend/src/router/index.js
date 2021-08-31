@@ -5,7 +5,6 @@ import Register from "../views/auth/Register";
 import Login from "../views/auth/Login";
 import SingleThread from "../views/thread/SingleThread";
 import CreateThread from "../views/thread/CreateThread";
-import {checkAuth} from "../requests/Auth";
 
 Vue.use(VueRouter)
 

@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import {loginRequest} from "@/requests/Auth";
+import {loginRequest} from "../../requests/Auth";
 export default {
   name: "Login",
   data: () => ({

@@ -83,7 +83,7 @@
 
 <script>
 
-import {checkAuth, getUserDataRequest} from "./requests/Auth";
+import {checkAuth, getUserDataRequest, logoutRequest} from "./requests/Auth";
 
 export default {
   name: 'App',
