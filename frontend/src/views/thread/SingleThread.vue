@@ -179,7 +179,8 @@
 
 <script>
 import VueMarkdown from 'vue-markdown/src/VueMarkdown'
-import {getSingleThreadRequest, submitNewReplyForThreadRequest} from "../../requests/Threads";
+import {deleteThreadRequest, getSingleThreadRequest, submitNewReplyForThreadRequest} from "../../requests/Threads";
+import {checkAuth, getUserDataRequest} from "../../requests/Auth";
 
 export default {
   name: "SingleThread",
@@ -187,6 +188,8 @@ export default {
     VueMarkdown
   },
   data: () => ({
+    isAuth: false,
+    userCanDelete: false,
     thread: {
       id: null,
       title: null,
@@ -195,13 +198,14 @@ export default {
       best_answer_id: null,
       created_at: null,
       channel: {
-        id:null,
+        id: null,
         name: null
       },
       user: {
-        id:null,
+        id: null,
         name: null
       },
+      answers: []
     },
     showReplyBox: false,
     replyData: {
@@ -210,26 +214,34 @@ export default {
     }
   }),
   methods: {
-    fetchThread(){
+    fetchThread() {
       getSingleThreadRequest(this.$route.params.slug).then(res => {
         this.thread = res.data
       })
     },
-
-    submitNewReply(){
+    submitNewReply() {
       this.replyData.thread_id = this.thread.id;
       submitNewReplyForThreadRequest(this.replyData).then(res => {
         this.fetchThread();
         this.showReplyBox = false;
       })
+    },
+    deleteThread() {
+      deleteThreadRequest(this.thread.id).then(res => {
+        this.$router.push('/');
+      })
     }
   },
   mounted() {
-    this.fetchThread()
+    this.fetchThread();
+    checkAuth();
+    this.isAuth = localStorage.getItem('isAuth') === 'true';
+    getUserDataRequest().then(res => {
+      this.userCanDelete = res.data[0].id === this.thread.user.id;
+    })
   }
 }
 </script>
 
 <style scoped>
-
 </style>
